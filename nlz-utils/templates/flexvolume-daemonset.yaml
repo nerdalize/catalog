@@ -2,17 +2,17 @@ apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
   namespace: {{ .Release.Namespace }}
-  name: {{ .Release.Name }}-nlz-nerd-datasets
+  name: {{ .Release.Name }}-nerd-flexvolumes
 spec:
   template:
     metadata:
-      name: {{ .Release.Name }}-nlz-nerd-datasets
+      name: {{ .Release.Name }}-nerd-flexvolumes
       labels:
-        app: {{ .Release.Name }}-nlz-nerd-datasets
+        app: {{ .Release.Name }}-nerd-flexvolumes
     spec:
       containers:
         - image: "{{ .Values.flexVolume.image.repository }}:{{ .Values.flexVolume.image.tag}}"
-          name: nlz-nerd-datasets
+          name: nerd-flexvolumes
           imagePullPolicy: {{ .Values.flexVolume.image.pullPolicy }}
           securityContext:
             privileged: true
