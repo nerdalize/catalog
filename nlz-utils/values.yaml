@@ -1,0 +1,51 @@
+# Default values for nlz-utils.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+labels:
+  app: nerd-cli
+  project: cli
+
+rbac:
+  create: true
+
+## Define serviceAccount names for components. Defaults to component's fully qualified name.
+##
+## serviceAccounts:
+##   flexVolume:
+##     create: true
+##     name:
+##   dataset:
+##     create: true
+##     name:
+
+dataset:
+  image:
+    tag: 0.3
+    repository: nerdalize/custom-dataset-controller
+    pullPolicy: Always
+
+  replicas: 1
+
+  resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #  cpu: 100m
+  #  memory: 128Mi
+  # requests:
+  #  cpu: 100m
+  #  memory: 128Mi
+
+flexVolume:
+  image: 
+    tag: 1.0.0-rc8
+    pullPolicy: Always
+    repository: nerdalize/nerd-flex-volume
+
+  mount:
+    path: /flexmnt
+    name: flexvolume-mount
+    hostPath: /var/lib/kubelet/volumeplugins/

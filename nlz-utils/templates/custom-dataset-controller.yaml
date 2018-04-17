@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-dataset-controller
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ .Values.labels.app }}
+    project: {{ .Values.labels.project }}
+spec:
+  replicas: {{ .Values.dataset.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.labels.app }}
+      project: {{ .Values.labels.project }}
+  template:
+    metadata:
+      name: {{ .Release.Name }}-dataset-controller
+      labels:
+        app: {{ .Values.labels.app }}
+        project: {{ .Values.labels.project }}
+    spec:
+      containers:
+      - name: controller
+        imagePullPolicy: {{ .Values.dataset.pullPolicy }}
+        image: "{{ .Values.dataset.image.repository }}:{{ .Values.dataset.image.tag }}"
+        args:
+          - -alsologtostderr 
+        resources:
+{{ toYaml .Values.dataset.resources | indent 10 }}

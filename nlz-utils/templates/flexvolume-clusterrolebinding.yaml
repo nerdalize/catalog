@@ -1,0 +1,18 @@
+{{- range .Values.flexVolume.clusterRoleBindings }}
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ .Release.Name }}-clusterrolebinding-flexvolume
+  labels:
+    chart: {{ template "nlz-utils.chart" $ }}
+    release: {{ $.Release.Name }}
+    heritage: {{ $.Release.Service }}
+subjects:
+- kind: {{ .subject.kind }}
+  name: {{ .subject.name }}
+roleRef:
+  kind: {{ .role.kind }}
+  name: {{ .role.name }}
+  apiGroup: rbac.authorization.k8s.io
+{{- end }}

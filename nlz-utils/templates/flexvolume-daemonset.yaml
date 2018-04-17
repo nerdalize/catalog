@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  namespace: {{ .Release.Namespace }}
+  name: {{ .Release.Name }}-nlz-nerd-datasets
+spec:
+  template:
+    metadata:
+      name: {{ .Release.Name }}-nlz-nerd-datasets
+      labels:
+        app: {{ .Release.Name }}-nlz-nerd-datasets
+    spec:
+      containers:
+        - image: "{{ .Values.flexVolume.image.repository }}:{{ .Values.flexVolume.image.tag}}"
+          name: nlz-nerd-datasets
+          imagePullPolicy: {{ .Values.flexVolume.image.pullPolicy }}
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - mountPath: {{ .Values.flexVolume.mount.path }}
+              name: {{ .Values.flexVolume.mount.name }}
+      volumes:
+        - name: {{ .Values.flexVolume.mount.name }}
+          hostPath:
+            path: {{ .Values.flexVolume.mount.hostPath }}
