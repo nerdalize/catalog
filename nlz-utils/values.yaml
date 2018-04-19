@@ -50,19 +50,19 @@ flexVolume:
     name: flexvolume-mount
     hostPath: /var/lib/kubelet/volumeplugins/
 
-  clusterRoleBindings:
-  - name: flexvolume
-    subject:
-      kind: ServiceAccount
-      name: default
-    role:
-      kind: ClusterRole
-      name: "{{ .Release.Name }}-clusterrole-flexvolume"
-  - name: defaultserviceaccount
-    subject:
-      kind: ServiceAccount
-      name: default
-    role:
-      kind: ClusterRole
-      name: "system:serviceaccount:{{ .Release.Namespace }}:default"
+#  clusterRoleBindings:
+#  - name: flexvolume
+#    subject:
+#      kind: ServiceAccount
+#      name: default
+#    role:
+#      kind: ClusterRole
+#      name: clusterrole-flexvolume
+#  - name: defaultserviceaccount
+#    subject:
+#      kind: ServiceAccount
+#      name: default
+#    role:
+#      kind: ClusterRole
+#      name: "system:serviceaccount:kube-system:default"
 

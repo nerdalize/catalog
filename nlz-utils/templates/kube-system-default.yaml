@@ -2,7 +2,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   labels:
-  name: system:serviceaccount:{{ .Release.Namespace }}:default
+  name: "system:serviceaccount:{{ .Release.Namespace }}:default"
 rules:
 - apiGroups:
   - batch
@@ -21,3 +21,17 @@ rules:
   - get
   - list
   - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+  name: "system:serviceaccount:{{ .Release.Namespace }}:default"
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: "system:serviceaccount:{{ .Release.Namespace }}:default"
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: {{ .Release.Namespace }}
