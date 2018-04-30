@@ -1,4 +1,4 @@
 apiVersion: v1
 description: A Helm chart for Kubernetes to be Nerdalize ready (with flexvolumes and datasets)
-name: nlz-utils
+name: Nerdalize Utilities
 version: 0.1.2
