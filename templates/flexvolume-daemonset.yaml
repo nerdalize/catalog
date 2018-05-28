@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  namespace: nlz-utils
+  name: nlz-utils-datasets
+spec:
+  template:
+    metadata:
+      name: nlz-utils-datasets
+      labels:
+        app: nlz-utils-datasets
+    spec:
+      containers:
+        - image: nerdalize/nerd-flex-volume:1.0.0-rc9
+          name: nlz-utils-datasets
+          imagePullPolicy: Always
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - mountPath: /flexmnt
+              name: flexvolume-mount
+      volumes:
+        - name: flexvolume-mount
+          hostPath:
+            path: /var/lib/kubelet/volumeplugins/
