@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nlz-utils-custom-dataset-controller
-  namespace: nlz-utils
+  #namespace: nlz-utils
   labels:
     app: nerd-cli
     project: cli

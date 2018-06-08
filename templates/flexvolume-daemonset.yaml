@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  namespace: nlz-utils
+#  namespace: nlz-utils
   name: nlz-utils-datasets
 spec:
   template:
