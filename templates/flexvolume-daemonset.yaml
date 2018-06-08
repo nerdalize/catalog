@@ -4,8 +4,13 @@ metadata:
 #  namespace: nlz-utils
   name: nlz-utils-datasets
 spec:
+  selector:
+    matchLabels:
+      name: nlz-utils-datasets
   template:
     metadata:
+      labels:
+        name: nlz-utils-datasets
       name: nlz-utils-datasets
     spec:
       containers:
