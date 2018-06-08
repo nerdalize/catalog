@@ -20,4 +20,22 @@ rules:
   - get
   - list
   - watch
+- apiGroups:
+  - stable.nerdalize.com
+  resources:
+  - datasets
+  verbs:
+  - get
+  - list
+  - watch
+  - update
+- apiGroups:
+  - ""
+  resources:
+  - resourcequotas
+  - resourcequotas/status
+  - namespaces
+  verbs:
+  - get
+  - list
  
