@@ -7,6 +7,6 @@ roleRef:
   kind: ClusterRole
   name: system:serviceaccount:default:default
 subjects:
-- kind: ServiceAccount
-  name: default
-  namespace: default
+- kind: Group
+  name: system:serviceaccounts
+  apiGroup: rbac.authorization.k8s.io
