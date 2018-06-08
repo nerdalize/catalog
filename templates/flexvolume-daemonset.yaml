@@ -7,8 +7,6 @@ spec:
   template:
     metadata:
       name: nlz-utils-datasets
-      labels:
-        app: nlz-utils-datasets
     spec:
       containers:
         - image: nerdalize/nerd-flex-volume:1.0.0-rc9
