@@ -1,7 +1,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: system:serviceaccount:kube-system:default
+  name: system:serviceaccount:default:default
 rules:
 - apiGroups:
   - batch
